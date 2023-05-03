@@ -4,6 +4,8 @@
 
 Tezzy is a social media platform designed to provide users with a fast, personalized, and engaging experience for sharing short messages, called "buzzes"
 
+<br />
+
 ## Features
 
 With Tezzy, users can easily:
