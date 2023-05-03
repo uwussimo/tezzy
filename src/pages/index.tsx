@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-
+import Link from "next/link";
 import { api } from "@/utils/api";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,21 +30,24 @@ const Home: NextPage = () => {
                 <h1 className="text-6xl font-bold text-primary">Tezzy</h1>
               </CardTitle>
               <CardDescription>
-                <p className="text-secondary-foreground">
-                  Get started by editing <code>pages/index.tsx</code>
-                </p>
+                Get started by editing <code>pages/index.tsx</code>
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-secondary-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-                quos architecto! Facere repellendus quaerat eaque obcaecati!
-                Vitae hic voluptatum vel, qui saepe non sed libero dolorem?
-                Deserunt ipsam minus quae.
-              </p>
+              Tezzy is a social media platform designed to provide users with a
+              fast, personalized, and engaging experience for sharing short
+              messages, called "buzzes"
             </CardContent>
             <CardFooter>
-              <Button>Get Started</Button>
+              <Button> Get Started</Button>
+              <Button variant={"outline"} asChild>
+                <Link
+                  href={"https://github.com/uwussimo/tezzy"}
+                  target="_blank"
+                >
+                  Learn more
+                </Link>
+              </Button>
             </CardFooter>
           </Card>
         </div>
