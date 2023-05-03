@@ -70,6 +70,8 @@ model Buzz {
   likes     Like[]
   user      User      @relation(fields: [userId], references: [id])
   userId    Int
+
+  @@index([userId])
 }
 
 // ## Follows table
@@ -89,6 +91,9 @@ model Follow {
   followerId    Int
   following     User      @relation(fields: [followingId], references: [id])
   followingId   Int
+
+  @@index([followerId])
+  @@index([followingId])
 }
 
 // ## Likes table
@@ -108,6 +113,9 @@ model Like {
   userId    Int
   buzz      Buzz      @relation(fields: [buzzId], references: [id])
   buzzId    Int
+
+  @@index([userId])
+  @@index([buzzId])
 }
 
 // ## Notifications table
@@ -128,6 +136,8 @@ model Notification {
   userId    Int
   type      String
   content   String
+
+  @@index([userId])
 }
 
 // ## Messages table
@@ -139,4 +149,5 @@ model Notification {
 // | receiver_id | int        | Foreign Key |
 // | content     | text       |             |
 // | created_at  | updated_at | timestamp   |
+
 
