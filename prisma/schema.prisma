@@ -17,3 +17,126 @@ model Example {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
+
+// # Database Structure for Tezzy
+// ## Users table
+
+// | Field Name    | Data Type | Key         |
+// | ------------- | --------- | ----------- |
+// | user_id       | int       | Primary Key |
+// | first_name    | varchar   |             |
+// | last_name     | varchar   |             |
+// | email         | varchar   |             |
+// | password      | varchar   |             |
+// | date_of_birth | date      |             |
+// | profile_pic   | varchar   |             |
+// | created_at    | timestamp |             |
+// | updated_at    | timestamp |             |
+
+model User {
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  firstName     String
+  lastName      String
+  email         String    @unique
+  password      String
+  dateOfBirth   DateTime
+  profilePic    String
+  buzzes        Buzz[]
+  followers     Follow[]  @relation("Follow")
+  following     Follow[] 
+  likes         Like[]
+  notifications Notification[]
+  // messages      Message[]
+}
+
+// ## Buzzes table
+
+// | Field Name  | Data Type | Key         |
+// | ----------- | --------- | ----------- |
+// | buzz_id     | int       | Primary Key |
+// | user_id     | int       | Foreign Key |
+// | content     | text      |             |
+// | likes_count | int       |             |
+// | created_at  | timestamp |             |
+// | updated_at  | timestamp |             |
+
+model Buzz {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  content   String
+  likes     Like[]
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+// ## Follows table
+
+// | Field Name   | Data Type | Key         |
+// | ------------ | --------- | ----------- |
+// | follow_id    | int       | Primary Key |
+// | follower_id  | int       | Foreign Key |
+// | following_id | int       | Foreign Key |
+// | created_at   | timestamp |             |
+
+model Follow {
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  follower      User      @relation("Follow", fields: [followerId], references: [id]) 
+  followerId    Int
+  following     User      @relation(fields: [followingId], references: [id])
+  followingId   Int
+}
+
+// ## Likes table
+
+// | Field Name | Data Type | Key         |
+// | ---------- | --------- | ----------- |
+// | like_id    | int       | Primary Key |
+// | user_id    | int       | Foreign Key |
+// | buzz_id    | int       | Foreign Key |
+// | created_at | timestamp |             |
+
+model Like {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  buzz      Buzz      @relation(fields: [buzzId], references: [id])
+  buzzId    Int
+}
+
+// ## Notifications table
+
+// | Field Name           | Data Type | Key         |
+// | -------------------- | --------- | ----------- |
+// | notification_id      | int       | Primary Key |
+// | user_id              | int       | Foreign Key |
+// | notification_type    | varchar   |             |
+// | notification_content | text      |             |
+// | created_at           | timestamp |             |
+
+model Notification {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  type      String
+  content   String
+}
+
+// ## Messages table
+
+// | Field Name  | Data Type  | Key         |
+// | ----------- | ---------- | ----------- |
+// | message_id  | int        | Primary Key |
+// | sender_id   | int        | Foreign Key |
+// | receiver_id | int        | Foreign Key |
+// | content     | text       |             |
+// | created_at  | updated_at | timestamp   |
+
