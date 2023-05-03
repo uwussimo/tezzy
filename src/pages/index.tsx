@@ -23,34 +23,29 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen items-center justify-center bg-gradient-to-tr from-slate-50 to-slate-300">
-        <div>
-          <Card className={cn("w-[380px]")}>
-            <CardHeader>
-              <CardTitle>
-                <h1 className="text-6xl font-bold text-primary">Tezzy</h1>
-              </CardTitle>
-              <CardDescription>
-                Get started by editing <code>pages/index.tsx</code>
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              Tezzy is a social media platform designed to provide users with a
-              fast, personalized, and engaging experience for sharing short
-              messages, called "buzzes"
-            </CardContent>
-            <CardFooter>
-              <Button> Get Started</Button>
-              <Button variant={"outline"} asChild>
-                <Link
-                  href={"https://github.com/uwussimo/tezzy"}
-                  target="_blank"
-                >
-                  Learn more
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        </div>
+        <Card className={cn("w-[380px]")}>
+          <CardHeader>
+            <CardTitle>
+              <span className="text-6xl font-bold text-primary">Tezzy</span>
+            </CardTitle>
+            <CardDescription>
+              Get started by editing <code>pages/index.tsx</code>
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            Tezzy is a social media platform designed to provide users with a
+            fast, personalized, and engaging experience for sharing short
+            messages, called "buzzes"
+          </CardContent>
+          <CardFooter>
+            <Button> Get Started</Button>
+            <Button variant={"outline"} asChild>
+              <Link href={"https://github.com/uwussimo/tezzy"} target="_blank">
+                Learn more
+              </Link>
+            </Button>
+          </CardFooter>
+        </Card>
       </main>
     </>
   );
