@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button, buttonVariants } from "./ui/button";
 import {
-  GitHubLogoIcon,
   RocketIcon,
   HomeIcon,
   MagnifyingGlassIcon,
@@ -10,8 +9,6 @@ import {
 import { ModeToggle } from "./mode-toggle";
 import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
-import NextNProgress from "nextjs-progressbar";
-import { useTheme } from "next-themes";
 
 const links = [
   {
@@ -35,33 +32,17 @@ const links = [
 ];
 
 export const Navbar = () => {
-  const { theme, systemTheme } = useTheme();
-
   return (
     <header>
-      <NextNProgress
-        color={
-          theme == "dark"
-            ? "#fff"
-            : theme == "system"
-            ? systemTheme == "dark"
-              ? "#fff"
-              : "#000"
-            : "#000"
-        }
-        startPosition={0.3}
-        stopDelayMs={200}
-        height={3}
-        showOnShallow={true}
-      />
-      <div className="fixed top-0 hidden w-full flex-row items-center justify-between bg-white p-2 px-32 dark:bg-zinc-950 md:flex">
+      <div className="fixed top-0 hidden w-full flex-row items-center justify-between bg-white p-4 px-32 dark:bg-zinc-950 md:flex">
         <div className="flex items-center justify-between gap-2">
           <div className="text-2xl font-medium">
             <Link href={"/"}>Tezzy</Link>
           </div>
-          {links.map(({ href, label, disabled }) => {
+          {links.map(({ href, label, disabled, icon }) => {
             return (
               <Button variant={"link"} disabled={disabled} key={label}>
+                {icon}
                 <Link href={href}>{label}</Link>
               </Button>
             );
