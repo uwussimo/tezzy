@@ -15,7 +15,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         showOnShallow={true}
       />
       <Navbar />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 };
