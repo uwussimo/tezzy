@@ -22,14 +22,16 @@ const InfoCard = () => {
           <span className="text-6xl font-bold text-primary">Tezzy</span>
         </CardTitle>
         <CardDescription>
-          {data?.map((user: any) => {
-            return (
-              <span key={user.id}>
-                from tRPC:
-                <code> {user?.firstName + " " + user?.lastName}</code>
-              </span>
-            );
-          })}
+          {data
+            ? data?.map((user: any) => {
+                return (
+                  <span key={user.id}>
+                    from tRPC:
+                    <code> {user?.firstName + " " + user?.lastName}</code>
+                  </span>
+                );
+              })
+            : "Loading..."}
         </CardDescription>
       </CardHeader>
       <CardContent>
