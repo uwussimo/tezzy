@@ -25,11 +25,9 @@ const InfoCard = () => {
         {data ? (
           data?.map((user) => {
             return (
-              <CardDescription>
-                <span key={user.id}>
-                  from tRPC:
-                  <code> {user?.firstName + " " + user?.lastName}</code>
-                </span>
+              <CardDescription key={user.id}>
+                from tRPC:
+                <code> {user?.firstName + " " + user?.lastName}</code>
               </CardDescription>
             );
           })
