@@ -10,8 +10,11 @@ import {
 } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { api } from "@/utils/api";
 
 const InfoCard = () => {
+  const { data } = api.user.getAll.useQuery();
+
   return (
     <Card className={cn("m-4 w-[380px]")}>
       <CardHeader>
@@ -19,7 +22,14 @@ const InfoCard = () => {
           <span className="text-6xl font-bold text-primary">Tezzy</span>
         </CardTitle>
         <CardDescription>
-          Get started by editing <code>pages/index.tsx</code>
+          {data?.map((user: any) => {
+            return (
+              <span key={user.id}>
+                from tRPC:
+                <code> {user?.firstName + " " + user?.lastName}</code>
+              </span>
+            );
+          })}
         </CardDescription>
       </CardHeader>
       <CardContent>
