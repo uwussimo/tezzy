@@ -25,14 +25,14 @@ const InfoCard = () => {
         {data ? (
           data?.map((user) => {
             return (
-              <CardDescription key={user.id}>
+              <CardDescription key={user.id} className={cn("pt-4")}>
                 from tRPC:
                 <code> {user?.firstName + " " + user?.lastName}</code>
               </CardDescription>
             );
           })
         ) : (
-          <div>
+          <div className="pt-4">
             <Skeleton className="h-[20px] w-full rounded-full" />
           </div>
         )}
