@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { cn } from "@/lib/utils";
-import { GitHubLogoIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 const InfoCard = () => {
   return (
