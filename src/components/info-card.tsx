@@ -23,7 +23,7 @@ const InfoCard = () => {
         </CardTitle>
         <CardDescription>
           {data
-            ? data?.map((user: any) => {
+            ? data?.map((user) => {
                 return (
                   <span key={user.id}>
                     from tRPC:

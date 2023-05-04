@@ -60,7 +60,7 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="fixed bottom-0 flex w-full items-center justify-between bg-white p-4 dark:bg-zinc-950 md:hidden">
-        {links.map(({ href, label, disabled, icon }) => {
+        {links.map(({ href, label, icon }) => {
           return (
             <Button variant={"outline"} key={label} asChild>
               <Link href={href}>

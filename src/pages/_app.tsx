@@ -3,7 +3,7 @@ import NextNProgress from "nextjs-progressbar";
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import { Navbar } from "@/components/nav";
-import { ThemeProvider } from "@/components/teme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
