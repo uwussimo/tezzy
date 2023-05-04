@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button, buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
 import {
   RocketIcon,
   HomeIcon,
@@ -7,8 +7,6 @@ import {
   LightningBoltIcon,
 } from "@radix-ui/react-icons";
 import { ModeToggle } from "./mode-toggle";
-import { Icons } from "./icons";
-import { cn } from "@/lib/utils";
 
 const links = [
   {
@@ -54,42 +52,6 @@ export const Navbar = () => {
         </div>
         <div className="items-center gap-2 md:hidden lg:flex">
           <ModeToggle />
-          {/* <Link
-            href={"https://github.com/uwussimo/tezzy"}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div
-              className={cn(
-                buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                }),
-                "w-9 px-0"
-              )}
-            >
-              <Icons.gitHub className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </div>
-          </Link>
-          <Link
-            href={"https://twitter.com/uwussimo"}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div
-              className={cn(
-                buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                }),
-                "w-9 px-0"
-              )}
-            >
-              <Icons.twitter className="h-5 w-5 fill-current" />
-              <span className="sr-only">Twitter</span>
-            </div>
-          </Link> */}
           <Button variant={"outline"}>Sign in</Button>
           <Button>
             <RocketIcon className="mr-2 h-4 w-4" />
