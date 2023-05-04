@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/nav";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen items-center justify-center bg-gradient-to-tr from-slate-50 to-slate-300">
+        <Navbar />
         <Card className={cn("w-[380px]")}>
           <CardHeader>
             <CardTitle>
