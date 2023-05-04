@@ -35,18 +35,22 @@ export const Navbar = () => {
   return (
     <header>
       <div className="fixed top-0 hidden w-full flex-row items-center justify-between bg-white p-4 px-32 dark:bg-zinc-950 md:flex">
-        <div className="flex items-center justify-between gap-2">
-          <div className="text-2xl font-medium">
-            <Link href={"/"}>Tezzy</Link>
+        <div className="flex items-center justify-between gap-8">
+          <div className="text-3xl font-medium">
+            <Link href={"/"}>TEZZY</Link>
           </div>
-          {links.map(({ href, label, disabled, icon }) => {
-            return (
-              <Button variant={"link"} disabled={disabled} key={label}>
-                {icon}
-                <Link href={href}>{label}</Link>
-              </Button>
-            );
-          })}
+          <div className="flex items-center justify-center">
+            {links.map(({ href, label, disabled, icon }) => {
+              return (
+                <Button variant={"ghost"} key={label} asChild>
+                  <Link href={href}>
+                    {icon}
+                    {label}
+                  </Link>
+                </Button>
+              );
+            })}
+          </div>
         </div>
         <div className="items-center gap-2 md:hidden lg:flex">
           <ModeToggle />
