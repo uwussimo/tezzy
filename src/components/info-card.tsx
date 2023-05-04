@@ -11,6 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { api } from "@/utils/api";
+import { Skeleton } from "./ui/skeleton";
 
 const InfoCard = () => {
   const { data } = api.user.getAll.useQuery();
@@ -21,18 +22,22 @@ const InfoCard = () => {
         <CardTitle>
           <span className="text-6xl font-bold text-primary">Tezzy</span>
         </CardTitle>
-        <CardDescription>
-          {data
-            ? data?.map((user) => {
-                return (
-                  <span key={user.id}>
-                    from tRPC:
-                    <code> {user?.firstName + " " + user?.lastName}</code>
-                  </span>
-                );
-              })
-            : "Loading..."}
-        </CardDescription>
+        {data ? (
+          data?.map((user) => {
+            return (
+              <CardDescription>
+                <span key={user.id}>
+                  from tRPC:
+                  <code> {user?.firstName + " " + user?.lastName}</code>
+                </span>
+              </CardDescription>
+            );
+          })
+        ) : (
+          <div>
+            <Skeleton className="h-[20px] w-full rounded-full" />
+          </div>
+        )}
       </CardHeader>
       <CardContent>
         Tezzy is a social media platform designed to provide users with a fast,
