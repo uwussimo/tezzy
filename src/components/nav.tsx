@@ -68,14 +68,17 @@ export const Navbar = () => {
       <div className="fixed bottom-0 flex w-full items-center justify-between bg-white p-4 dark:bg-zinc-950 md:hidden">
         {links.map(({ href, label, icon }) => {
           return (
-            <Button variant={"outline"} key={label} asChild>
+            <Button variant={"ghost"} key={label} asChild>
               <Link href={href}>
                 {icon}
-                {label}
+                <span className="text-xs">{label}</span>
               </Link>
             </Button>
           );
         })}
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </header>
   );
