@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { api } from "@/utils/api";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,10 +11,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/nav";
+// import { api } from "@/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
   return (
     <>
       <Head>
@@ -24,7 +23,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen items-center justify-center bg-gradient-to-tr from-slate-50 to-slate-300">
-        <Navbar />
         <Card className={cn("w-[380px]")}>
           <CardHeader>
             <CardTitle>

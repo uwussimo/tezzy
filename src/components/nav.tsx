@@ -26,7 +26,7 @@ export const Navbar = () => {
             <TooltipProvider key={label}>
               <Tooltip>
                 <TooltipTrigger>
-                  <Button variant={"link"} disabled={disabled}>
+                  <Button variant={"link"} asChild>
                     <Link href={href} key={`${href}${label}`}>
                       {label}
                     </Link>
