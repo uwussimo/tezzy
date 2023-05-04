@@ -1,0 +1,46 @@
+import Link from "next/link";
+import { Button } from "./ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import { cn } from "@/lib/utils";
+
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
+const InfoCard = () => {
+  return (
+    <Card className={cn("m-4 w-[380px]")}>
+      <CardHeader>
+        <CardTitle>
+          <span className="text-6xl font-bold text-primary">Tezzy</span>
+        </CardTitle>
+        <CardDescription>
+          Get started by editing <code>pages/index.tsx</code>
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        Tezzy is a social media platform designed to provide users with a fast,
+        personalized, and engaging experience for sharing short messages, called
+        buzzes, with the world.
+      </CardContent>
+      <CardFooter>
+        <div className="flex gap-2">
+          <Button> Get Started</Button>
+          <Button variant={"outline"} asChild>
+            <Link href={"https://github.com/uwussimo/tezzy"} target="_blank">
+              <GitHubLogoIcon className="mr-2 h-4 w-4" />
+              Learn more
+            </Link>
+          </Button>
+        </div>
+      </CardFooter>
+    </Card>
+  );
+};
+
+export { InfoCard };
