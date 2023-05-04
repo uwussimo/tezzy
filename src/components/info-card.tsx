@@ -9,8 +9,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { cn } from "@/lib/utils";
-
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 
 const InfoCard = () => {
   return (
@@ -33,8 +32,8 @@ const InfoCard = () => {
           <Button> Get Started</Button>
           <Button variant={"outline"} asChild>
             <Link href={"https://github.com/uwussimo/tezzy"} target="_blank">
-              <GitHubLogoIcon className="mr-2 h-4 w-4" />
               Learn more
+              <ExternalLinkIcon className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
