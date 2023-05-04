@@ -54,7 +54,7 @@ export const Navbar = () => {
         </div>
         <div className="items-center gap-2 md:hidden lg:flex">
           <ModeToggle />
-          <Link
+          {/* <Link
             href={"https://github.com/uwussimo/tezzy"}
             target="_blank"
             rel="noreferrer"
@@ -89,7 +89,7 @@ export const Navbar = () => {
               <Icons.twitter className="h-5 w-5 fill-current" />
               <span className="sr-only">Twitter</span>
             </div>
-          </Link>
+          </Link> */}
           <Button variant={"outline"}>Sign in</Button>
           <Button>
             <RocketIcon className="mr-2 h-4 w-4" />
