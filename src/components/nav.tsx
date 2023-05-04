@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import {
   GitHubLogoIcon,
   RocketIcon,
@@ -8,6 +8,10 @@ import {
   LightningBoltIcon,
 } from "@radix-ui/react-icons";
 import { ModeToggle } from "./mode-toggle";
+import { Icons } from "./icons";
+import { cn } from "@/lib/utils";
+import NextNProgress from "nextjs-progressbar";
+import { useTheme } from "next-themes";
 
 const links = [
   {
@@ -31,9 +35,26 @@ const links = [
 ];
 
 export const Navbar = () => {
+  const { theme, systemTheme } = useTheme();
+
   return (
     <header>
-      <div className="fixed top-0 hidden w-full flex-row items-center justify-between bg-white p-2 px-32 dark:bg-black md:flex">
+      <NextNProgress
+        color={
+          theme == "dark"
+            ? "#fff"
+            : theme == "system"
+            ? systemTheme == "dark"
+              ? "#fff"
+              : "#000"
+            : "#000"
+        }
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
+      <div className="fixed top-0 hidden w-full flex-row items-center justify-between bg-white p-2 px-32 dark:bg-zinc-950 md:flex">
         <div className="flex items-center justify-between gap-2">
           <div className="text-2xl font-medium">
             <Link href={"/"}>Tezzy</Link>
@@ -48,11 +69,42 @@ export const Navbar = () => {
         </div>
         <div className="items-center gap-2 md:hidden lg:flex">
           <ModeToggle />
-          <Button variant={"ghost"} asChild>
-            <Link href={"https://github.com/uwussimo/tezzy"} target="_blank">
-              <GitHubLogoIcon className="h-5 w-5" />
-            </Link>
-          </Button>
+          <Link
+            href={"https://github.com/uwussimo/tezzy"}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div
+              className={cn(
+                buttonVariants({
+                  size: "sm",
+                  variant: "ghost",
+                }),
+                "w-9 px-0"
+              )}
+            >
+              <Icons.gitHub className="h-5 w-5" />
+              <span className="sr-only">GitHub</span>
+            </div>
+          </Link>
+          <Link
+            href={"https://twitter.com/uwussimo"}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div
+              className={cn(
+                buttonVariants({
+                  size: "sm",
+                  variant: "ghost",
+                }),
+                "w-9 px-0"
+              )}
+            >
+              <Icons.twitter className="h-5 w-5 fill-current" />
+              <span className="sr-only">Twitter</span>
+            </div>
+          </Link>
           <Button variant={"outline"}>Sign in</Button>
           <Button>
             <RocketIcon className="mr-2 h-4 w-4" />
@@ -60,7 +112,7 @@ export const Navbar = () => {
           </Button>
         </div>
       </div>
-      <div className="fixed bottom-0 flex w-full items-center justify-between bg-white p-4 dark:bg-primary md:hidden">
+      <div className="fixed bottom-0 flex w-full items-center justify-between bg-white p-4 dark:bg-zinc-950 md:hidden">
         {links.map(({ href, label, disabled, icon }) => {
           return (
             <Button variant={"outline"} key={label} asChild>
