@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { InfoCard } from "@/components/info-card";
+import { SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 
 const Home: NextPage = () => {
   return (
@@ -11,7 +12,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen items-center justify-center bg-gradient-to-tr from-slate-50  to-slate-300 dark:from-zinc-950">
-        <InfoCard />
+        <SignedIn>
+          <InfoCard />
+        </SignedIn>
+        <SignedOut>
+          <SignIn />
+        </SignedOut>
       </main>
     </>
   );

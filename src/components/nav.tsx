@@ -7,6 +7,7 @@ import {
   LightningBoltIcon,
 } from "@radix-ui/react-icons";
 import { ModeToggle } from "./mode-toggle";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const links = [
   {
@@ -52,11 +53,16 @@ export const Navbar = () => {
         </div>
         <div className="items-center gap-2 md:hidden lg:flex">
           <ModeToggle />
-          <Button variant={"outline"}>Sign in</Button>
-          <Button>
-            <RocketIcon className="mr-2 h-4 w-4" />
-            Get started
-          </Button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Button variant={"outline"}>Sign in</Button>
+            <Button>
+              <RocketIcon className="mr-2 h-4 w-4" />
+              Get started
+            </Button>
+          </SignedOut>
         </div>
       </div>
       <div className="fixed bottom-0 flex w-full items-center justify-between bg-white p-4 dark:bg-zinc-950 md:hidden">

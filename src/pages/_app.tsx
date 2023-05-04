@@ -4,6 +4,8 @@ import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import { Navbar } from "@/components/nav";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkProvider } from "@clerk/nextjs";
+
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
@@ -15,8 +17,10 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           height={3}
           showOnShallow={true}
         />
-        <Navbar />
-        <Component {...pageProps} />
+        <ClerkProvider {...pageProps}>
+          <Navbar />
+          <Component {...pageProps} />
+        </ClerkProvider>
       </ThemeProvider>
     </>
   );
