@@ -2,8 +2,11 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { InfoCard } from "@/components/info-card";
 import { SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+import { useGetMode } from "@/hooks/useGetMode";
 
 const Home: NextPage = () => {
+  const theme = useGetMode();
   return (
     <>
       <Head>
@@ -16,7 +19,14 @@ const Home: NextPage = () => {
           <InfoCard />
         </SignedIn>
         <SignedOut>
-          <SignIn />
+          <SignIn
+            appearance={{
+              baseTheme: theme == "dark" ? dark : undefined,
+              variables: {
+                colorPrimary: "#0F172A",
+              },
+            }}
+          />
         </SignedOut>
       </main>
     </>

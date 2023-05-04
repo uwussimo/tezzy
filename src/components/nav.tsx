@@ -8,6 +8,8 @@ import {
 } from "@radix-ui/react-icons";
 import { ModeToggle } from "./mode-toggle";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { useGetMode } from "@/hooks/useGetMode";
+import { dark } from "@clerk/themes";
 
 const links = [
   {
@@ -31,6 +33,7 @@ const links = [
 ];
 
 export const Navbar = () => {
+  const theme = useGetMode();
   return (
     <header>
       <div className="fixed top-0 hidden w-full flex-row items-center justify-between bg-white p-4 px-32 dark:bg-zinc-950 md:flex">
@@ -54,7 +57,14 @@ export const Navbar = () => {
         <div className="items-center gap-2 md:hidden lg:flex">
           <ModeToggle />
           <SignedIn>
-            <UserButton />
+            <UserButton
+              appearance={{
+                baseTheme: theme == "dark" ? dark : undefined,
+                variables: {
+                  colorPrimary: "#0F172A",
+                },
+              }}
+            />
           </SignedIn>
           <SignedOut>
             <Button variant={"outline"}>Sign in</Button>
@@ -77,7 +87,14 @@ export const Navbar = () => {
           );
         })}
         <SignedIn>
-          <UserButton />
+          <UserButton
+            appearance={{
+              baseTheme: theme == "dark" ? dark : undefined,
+              variables: {
+                colorPrimary: "#0F172A",
+              },
+            }}
+          />
         </SignedIn>
       </div>
     </header>
