@@ -8,15 +8,13 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 
-type Props = {};
-
 const links = [
   { href: "/", label: "Home", disabled: false },
   { href: "/about", label: "About", disabled: true },
   { href: "/contact", label: "Contact", disabled: true },
 ];
 
-export const Navbar = (props: Props) => {
+export const Navbar = () => {
   return (
     <div className="fixed top-0 flex w-full flex-row items-center justify-between bg-white p-2 px-32">
       <div className="flex items-center justify-between gap-2">
@@ -25,7 +23,7 @@ export const Navbar = (props: Props) => {
         </div>
         {links.map(({ href, label, disabled }) => {
           return (
-            <TooltipProvider>
+            <TooltipProvider key={label}>
               <Tooltip>
                 <TooltipTrigger>
                   <Button variant={"link"} disabled={disabled}>

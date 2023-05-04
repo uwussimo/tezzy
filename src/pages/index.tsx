@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           <CardContent>
             Tezzy is a social media platform designed to provide users with a
             fast, personalized, and engaging experience for sharing short
-            messages, called "buzzes"
+            messages, called buzzes, with the world.
           </CardContent>
           <CardFooter>
             <Button> Get Started</Button>
