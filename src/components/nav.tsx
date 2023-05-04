@@ -39,10 +39,8 @@ export const Navbar = () => {
           </div>
           {links.map(({ href, label, disabled }) => {
             return (
-              <Button variant={"link"} disabled={disabled}>
-                <Link href={href} key={`${href}${label}`}>
-                  {label}
-                </Link>
+              <Button variant={"link"} disabled={disabled} key={label}>
+                <Link href={href}>{label}</Link>
               </Button>
             );
           })}
@@ -63,8 +61,8 @@ export const Navbar = () => {
       <div className="fixed bottom-0 flex w-full items-center justify-between bg-white p-4 md:hidden">
         {links.map(({ href, label, disabled, icon }) => {
           return (
-            <Button variant={"outline"} asChild>
-              <Link href={href} key={`${href}${label}`}>
+            <Button variant={"outline"} key={label} asChild>
+              <Link href={href}>
                 {icon}
                 {label}
               </Link>
